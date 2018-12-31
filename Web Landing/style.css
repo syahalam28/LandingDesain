@@ -1,0 +1,228 @@
+/*Navbar*/
+/*Font Dengan Google Font*/
+/*Penggunaan z index untuk membuat tampilan di depan layar harus ada postion sama z indexnya*/
+.navbar{
+	position: relative;
+	/*Membuat Tampilan di depan layar menggunakan index 1*/
+	z-index: 1;
+}
+.navbar-brand{
+	font-family: viga;
+	font-size: 32px;
+}
+
+/*Jumbotron*/
+.jumbotron{
+	background-image: url(img/jumbotron-bg.jpg);
+	background-size: cover;
+	height:540px;
+	text-align: center;
+	/*Karena di after ada position absolute maka di jumbotron kita buat relativ untuk sama sama menambah kenaikan 1 dimensi*/
+	position: relative;
+
+
+}
+.jumbotron .container{
+	z-index: 1;
+	position: relative;
+}
+/* after jumbotron suatu tampilan setelah jumbotron perlu ada content dan display
+Karena ingin membuat suatu gradasi warna pada jumbotron maka kita menggunakan after*/
+.jumbotron::after{
+	content: '';
+	display: block;
+	width: 100%;
+	/*Jika ingin gradasi sampai atas maka gunakan height 100% disini aku engga gunain sampe atas makannya aku gunakan sampai 80% ajah*/
+	height:80%;
+	/*Proses Gradasi*/
+	/*Bacanya gini dari to top dari warna hitam sampai keatas menjadi trasnparant karena perhatikan akhirnya ada 1 dan 0 pada rgba 1 
+	menandakan solid sedangkan 0 menandakan transparants*/
+	background-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0));
+	position: absolute;
+	/*Membuat after melekat pada jumbotron */
+	bottom: 0;
+
+
+}
+
+
+
+.display-4{
+	color: white;
+	margin-top: 150px;
+	font-weight: 200;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.6);
+	font-size: 40px;
+	margin-bottom: 30px;
+}
+.display-4 span{
+	font-weight: 500;
+
+}
+
+/*Info panel*/
+.info-panel{
+	/*Karena di design bentuknya kota maka kita kasih box lalu karena ada bayangannya kita berikan box shadow 
+	x offset y offset trasnparant lalu warna dengan transparan 0.5*/
+	box-shadow: 0 3px 20px rgba(0,0,0,0.5);
+	border-radius: 12px;
+	margin-top:-100px;
+	background-color: white;
+	/*Padding is jarak */
+	padding:30px;
+
+}
+.info-panel h4{
+	font-size: 16px;
+	/*Membuat huruf besar semua*/
+	text-transform: uppercase;
+	/*Membuat tulisan bercetak tebal pada h4 dengan font-weight*/
+	font-weight: bold;
+	margin-top: 5px;
+}
+
+.info-panel p{
+	font-size: 14px;
+	color: #ACACAC;
+	margin-top: -5px;
+	font-weight: 200;
+}
+
+/*Jarak antar gambar */
+.info-panel img{
+	width: 80px;
+	height: 80px;
+	margin-right: 20px;
+	margin-bottom: 20px;
+}
+
+/*Workingspace*/
+.workingspace{
+	margin-top: 120px;
+	text-align: center;
+}
+.workingspace h3{
+	font-size: 52px;
+	font-weight: 200;
+	text-transform:uppercase;
+	margin-top: 30px;
+}
+.workingspace h3 span{
+	font-weight: 500;
+
+}
+.workingspace p{
+	font-size: 18px;
+	color: #ACACAC;
+	font-weight: 200;
+	/*Jika margin hanya 2 artinya atas bawah 30px kanan kiri 0*/
+	margin:30px 0;
+}
+
+
+/*Desain Untuk Tombol Utility*/
+.tombol{
+	text-transform: uppercase;
+	border-radius: 40px;
+}
+
+/*Testimonial */
+/*Margin - keatas + bawah kalo margn right - kiri + kanan*/
+.testimonial{
+	margin-top: 100px;
+}
+
+.testimonial h5{
+	text-align: center;
+	font-weight: 200;
+	font-style: italic;
+	font-size: 24px;
+}
+/*Margin bottom + keatas margin bottom - kebawah*/
+.testimonial figure img {
+	width: 60px;
+	/*Margin atas kiri&kanan bawah karena 3*/
+	margin: 20px 10px 15px;
+	opacity: 0.6;
+}
+.testimonial figure img.utama{
+	width: 90px;
+	opacity: 1;
+	margin-top: 5px;
+}
+
+.testimonial figure h5{
+	font-size:16px;
+	font-weight: bold;
+	font-style: normal;
+	color: #1C2C2D; 
+	
+}
+.testimonial figure p{
+	font-size: 12px;
+	color: #ACACAC;
+	text-align: center;
+	margin-top: -5px;
+}
+
+/*Footer*/
+.footer p{
+	color: #ACACAC;
+	font-size: 18px;
+}
+.footer{
+	margin-top: 100px;
+}
+
+
+
+
+
+/*Desktop Version Responsi*/
+@media (min-width: 992px) {
+	/*Important fungsi adalah untuk mngeksekusi fungsi tanpa memperhatikan peraturan note "Kalo ada fungsi yang tidak jalan bisa gunakan 
+	important"*/
+	.navbar-brand, .nav-link {
+		color: white !Important;
+		/*Text shadow x offset y offset  tebal bayangan warna
+		rgba (yang terakhir untuk mengatur transparansi)*/
+		text-shadow: 1px 1px 1px rgba(0,0,0,0.7);
+	}
+	.nav-link{
+	/*Membuat Tulisan Besar Semua*/
+	text-transform: uppercase;
+	margin-right: 30px;
+}
+/*Karena tidak bisa mengatur garis bawah langsung pada nav ketika hover
+ maka digunakan fungsi after */
+.nav-link:hover::after{
+	content: '';
+	display: block;
+	border-bottom: 3px solid #0B63DC;
+	/*Mengatur Ukuran garis bawah margin auto adalah berfungsi untuk meratakan */
+	width: 50%;
+	margin: auto;
+	/*Padding bottom berfungsi untuk mengatur jarak garis bawah dengan navbar*/
+	padding-bottom: 5px;
+	/*Karena Margin Bergerak Saat terkena hover maka digunakan minus dengan penjumlahan 3px + 5px*/
+	margin-bottom: -8px;
+}
+.jumbotron{
+	 /*Membuat Background menutupi Navbar - keatas + kebawah
+	 naikin suatu element keatas */
+	 margin-top: -75px;
+	 height: 640px;	
+}
+.display-4{
+	font-size: 62px;
+}
+.workingspace{
+	text-align: left;
+}
+.testimonial h5{
+	font-size: 32px;
+}
+
+}
+
+
